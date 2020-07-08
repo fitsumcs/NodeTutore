@@ -7,8 +7,12 @@ const questions = [
     "What are you doing now ? "
 ];
 
-collectAnswers(questions,answers=>{
+ const answerEvent =  collectAnswers(questions,answers=>{
     console.log("Thank You for Your Answers.");
     console.log(answers);
-    process.exit();
+    
 });
+
+answerEvent.on("answer",answer=>{console.log(`Your Answer : ${answer}`)})
+// answerEvent.on("complete",()=>process.exit());/
+
