@@ -6,10 +6,9 @@ const path = require("path");
 const server = http.createServer((req,res)=>{
  
     const q =url.parse(req.url,true);
-    let fileName = path.join(__dirname,q.pathname); 
+    let fileName = path.join(__dirname,q.pathname) + ".html"; 
     if(q.pathname ==="/") fileName = path.join(__dirname,'/index.html'); 
-    // console.log(path.join(__dirname ,q.pathname) );
-    // console.log(q.path);
+    
     
     fs.readFile(fileName,(err,data)=>{
         if(err)
