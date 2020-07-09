@@ -7,6 +7,7 @@ const server = http.createServer((req,res)=>{
  
     const q =url.parse(req.url,true);
     let fileName = path.join(__dirname,q.pathname); 
+    if(q.pathname ==="/") fileName = path.join(__dirname,'/index.html'); 
     // console.log(path.join(__dirname ,q.pathname) );
     // console.log(q.path);
     
