@@ -8,7 +8,7 @@ const server = http.createServer(
         let qu = url.parse(rurl,true).query;
         let name = qu.name
         res.write(`<h1>The URL Navigated : ${rurl}</h1>`) //Printing the URL 
-        res.write(`<h1>Your Name : ${name}</h1>`) //Printing the Name from query string  
+        res.write(`<h1>Your Name : ${name}</h1>`) //Printing the Name from query string  E.g /?name=Abebe
         res.end(); 
         
     }
