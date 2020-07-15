@@ -1,7 +1,7 @@
 const catMe = require("cat-me");
 
 // Get randome Cat Pic 
-console.log(catMe())
+console.log(catMe());
 
 // Get a specific Cat 
-console.log(catMe('nyan'))
+console.log(catMe('nyan'));
