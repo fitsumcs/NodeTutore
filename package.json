@@ -1,0 +1,19 @@
+{
+  "name": "node-demo",
+  "version": "1.0.0",
+  "description": "Node Tutorial ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fitsumcs/NodeTutore.git"
+  },
+  "author": "Fitsum Alemu",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/fitsumcs/NodeTutore/issues"
+  },
+  "homepage": "https://github.com/fitsumcs/NodeTutore#readme"
+}
