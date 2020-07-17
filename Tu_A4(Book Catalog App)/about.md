@@ -1,8 +1,8 @@
-# This is a command based book store app
+### This is a command based book store app
 
-# 1. Add Book Info 
-# 2. Remove Book 
-# 3. View All Books / Specific Book By ISBN
+#### 1. Add Book Info 
+#### 2. Remove Book 
+### 3. View All Books / Specific Book By ISBN
 
 ###### 
 
