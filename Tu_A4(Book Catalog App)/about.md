@@ -11,6 +11,6 @@
 ### Based on yargs NMP Module 
 
 #### Steps to follow To work on this demo 
-1. First install yargs ====>>> nmp install yargs  [DocLink][https://www.npmjs.com/package/yargs] 
+1. First install yargs ====>>> nmp install yargs  [DocLink](https://www.npmjs.com/package/yargs) 
 
 ****************
