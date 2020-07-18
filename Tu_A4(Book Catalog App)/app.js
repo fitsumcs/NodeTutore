@@ -1,5 +1,6 @@
 // req
 const yargs = require('yargs');
+const { argv } = require('yargs');
 
 // custome yargs version
 yargs.version('1.1.0');
@@ -10,8 +11,18 @@ yargs.version('1.1.0');
 yargs.command({
     command: 'add',
     describe: 'Add New Book',
-    handler() {
-        console.log("Adding New Book");
+    builder: {
+        title: {
+            describe: 'Title of the Book',
+            demandOption: true
+        },
+        author: {
+            describe: 'Author of the Book',
+            demandOption: true
+        }
+    },
+    handler(argv) {
+        console.log("Adding New Book", argv);
     }
 });
 
