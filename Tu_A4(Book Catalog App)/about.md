@@ -12,5 +12,8 @@
 
 #### Steps to follow To work on this demo 
 1. First install yargs ====>>> nmp install yargs  [DocLink](https://www.npmjs.com/package/yargs) 
-
+2. Operate 
+   * node app add --title = "Books Title" --author = "Book Author" 
+   * node app remove --title = "Books Title"  
+   * node app display 
 ****************
