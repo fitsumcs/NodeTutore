@@ -9,15 +9,17 @@ function addBook(title, author) {
         return console.log(chalk.inverse.red("Please Provide Book Title and Author"));
     }
     const book = loadBooks();
+    const duplicate = book.find((data) => {
+
+        return data.title === title;
+    });
+
+    if (duplicate) {
+        return console.log(chalk.inverse.red("Book Already Registered..."));
+    }
     book.push({ title, author });
     saveBook(book);
     console.log(chalk.inverse.green("Book Added Successfully"));
-
-
-
-
-
-
 }
 
 
