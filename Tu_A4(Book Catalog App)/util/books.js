@@ -41,14 +41,19 @@ function removeBook(title) {
 // display all books 
 function displayAllBooks() {
     const books = loadBooks();
-    console.log(chalk.inverse.bold.yellowBright("##################################################"));
-    console.log(chalk.inverse.bold.underline.green("Here are the Books in the Library..."));
-    console.log(chalk.inverse.bold.blue("Book Title ..................Book Author"));
-    books.forEach((book) => {
-        console.log(book.title + '.....................' + book.author);
-    });
+    if (books.length === 0) {
+        console.log(chalk.inverse.bold.yellowBright("No Books in the Store"));
+    } else {
+        console.log(chalk.inverse.bold.yellowBright("##################################################"));
+        console.log(chalk.inverse.bold.underline.green("Here are the Books in the Library..."));
+        console.log(chalk.inverse.bold.blue("Book Title ..................Book Author"));
+        books.forEach((book) => {
+            console.log(book.title + '.....................' + book.author);
+        });
 
-    console.log(chalk.inverse.bold.yellowBright("##################################################"));
+        console.log(chalk.inverse.bold.yellowBright("##################################################"));
+
+    }
 
 
 }
