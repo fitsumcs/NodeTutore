@@ -1,7 +1,7 @@
 // req
 const yargs = require('yargs');
 
-const noteMethods = require('./util/notes')
+const noteMethods = require('./util/books')
 
 
 // custome yargs version
@@ -26,7 +26,7 @@ yargs.command({
         }
     },
     handler(argv) {
-        noteMethods.addNotes(argv.title, argv.author)
+        noteMethods.addBook(argv.title, argv.author)
 
     }
 });
