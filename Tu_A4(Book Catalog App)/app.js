@@ -14,15 +14,18 @@ yargs.command({
     builder: {
         title: {
             describe: 'Title of the Book',
-            demandOption: true
+            demandOption: true,
+            type: 'string'
         },
         author: {
             describe: 'Author of the Book',
-            demandOption: true
+            demandOption: true,
+            type: 'string'
         }
     },
     handler(argv) {
-        console.log("Adding New Book", argv);
+        console.log("Book Name :   ", argv.title);
+        console.log("Book Author : ", argv.author);
     }
 });
 
@@ -54,4 +57,6 @@ yargs.command({
     }
 });
 
-console.log(yargs.argv);
+yargs.parse();
+
+// console.log(yargs.argv);
