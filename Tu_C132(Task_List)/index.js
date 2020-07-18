@@ -1,16 +1,23 @@
 // Require statements 
+const path = require('path');
 const express = require('express');
+const dateFormat = require('./utils/dateFormater');
+
+
 
 const app = express();
 
-
+// configuration 
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, '/views'));
 
 
 
 // routes 
 app.get('/', (req, res) => {
 
-    res.send("Hi There ...");
+    let day = dateFormat();
+    res.render('home', { day });
 
 });
 
