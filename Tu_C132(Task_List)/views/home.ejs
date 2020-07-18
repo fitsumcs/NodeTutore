@@ -15,9 +15,11 @@
     </p>
     <!-- Task List -->
     <ul>
-        <li>Buy Book</li>
-        <li>Eat Lunch</li>
-        <li>Eat Food</li>
+        <% for(i=0; i < task.length; i++){ %>
+            <li>
+                <%= task[i] %>
+            </li>
+            <% } %>
     </ul>
     <!-- New Data Input Form -->
     <form action="/" method="post">

@@ -1,7 +1,9 @@
 // Require statements 
 const path = require('path');
 const express = require('express');
+const bodyParser = require("body-parser");
 const dateFormat = require('./utils/dateFormater');
+const taskUtil = require('./utils/taskList');
 
 
 
@@ -11,19 +13,22 @@ const app = express();
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, '/views'));
 
+app.use(bodyParser.urlencoded({ extended: true }));
+
 
 
 // routes 
 app.get('/', (req, res) => {
 
     let day = dateFormat();
-    res.render('home', { day });
+    let task = taskUtil.viewTaskList();
+    res.render('home', { day, task });
 
 });
 app.post('/', (req, res) => {
 
-    let day = dateFormat();
-    res.render('home', { day });
+    let day = taskUtil.addTask(req.body.newItem);
+    res.redirect('/');
 
 });
 
