@@ -1,7 +1,7 @@
 // req
 const yargs = require('yargs');
 
-const noteMethods = require('./util/books')
+const bookMethods = require('./util/books')
 
 
 // custome yargs version
@@ -26,7 +26,7 @@ yargs.command({
         }
     },
     handler(argv) {
-        noteMethods.addBook(argv.title, argv.author)
+        bookMethods.addBook(argv.title, argv.author)
 
     }
 });
@@ -35,11 +35,31 @@ yargs.command({
 yargs.command({
     command: 'remove',
     describe: 'remove New Book',
-    handler() {
-        console.log("Remove New Book");
+
+    builder: {
+        title: {
+            describe: 'Title of the Book',
+            demandOption: true,
+            type: 'string'
+        }
+    },
+    handler(argv) {
+
+        bookMethods.removeBook(argv.title);
     }
 });
 
+
+
+
+// Display all books 
+yargs.command({
+    command: 'display',
+    describe: 'View All Available Books',
+    handler() {
+        console.log("View all Books");
+    }
+});
 
 // view single book
 yargs.command({
@@ -47,15 +67,6 @@ yargs.command({
     describe: 'view a Single Book',
     handler() {
         console.log("View Single Book");
-    }
-});
-
-// Display all books 
-yargs.command({
-    command: 'all',
-    describe: 'View All Available Books',
-    handler() {
-        console.log("View all Books");
     }
 });
 

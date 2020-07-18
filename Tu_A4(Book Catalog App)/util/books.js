@@ -22,6 +22,37 @@ function addBook(title, author) {
     console.log(chalk.inverse.green("Book Added Successfully"));
 }
 
+// remove book
+function removeBook(title) {
+    const books = loadBooks();
+    const book = books.filter((book, index) => {
+        return book.title !== title;
+    });
+    if (books.length > book.length) {
+        saveBook(book);
+        console.log(chalk.inverse.green("Book Removed Successfully"));
+
+    } else {
+        console.log(chalk.inverse.red("Book Not Found"));
+    }
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 // load Books
@@ -42,4 +73,4 @@ function saveBook(book) {
 
 }
 
-module.exports = { addBook };
+module.exports = { addBook, removeBook };
