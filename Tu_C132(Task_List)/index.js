@@ -27,7 +27,7 @@ app.get('/', (req, res) => {
 });
 app.post('/', (req, res) => {
 
-    let day = taskUtil.addTask(req.body.newItem);
+    taskUtil.addTask(req.body.newItem);
     res.redirect('/');
 
 });
