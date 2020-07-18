@@ -1,6 +1,4 @@
-const { functions } = require("underscore");
-
-let tasks = ['Go to Office', 'Open PC'];
+let tasks = [];
 
 function viewTaskList() {
     return tasks;

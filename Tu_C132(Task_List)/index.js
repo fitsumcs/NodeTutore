@@ -21,8 +21,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.get('/', (req, res) => {
 
     let day = dateFormat();
-    let task = taskUtil.viewTaskList();
-    res.render('home', { day, task });
+    let tasks = taskUtil.viewTaskList();
+    res.render('home', { day, tasks });
 
 });
 app.post('/', (req, res) => {

@@ -14,19 +14,24 @@
         <%= day %>
     </p>
     <!-- Task List -->
-    <ul>
-        <% for(i=0; i < task.length; i++){ %>
-            <li>
-                <%= task[i] %>
-            </li>
+    <% if(tasks.length === 0 ) { %>
+        <p>There is No Task </p>
+        <% } else{ %>
+            <ul>
+                <% for(i=0; i < tasks.length; i++) { %>
+                    <li>
+                        <%= tasks[i] %>
+                    </li>
+                    <% } %>
+            </ul>
             <% } %>
-    </ul>
-    <!-- New Data Input Form -->
-    <form action="/" method="post">
-        <input type="text" name="newItem">
-        <input type="submit" value="Add New Task">
 
-    </form>
+                <!-- New Data Input Form -->
+                <form action="/" method="post">
+                    <input type="text" name="newItem">
+                    <input type="submit" value="Add New Task">
+
+                </form>
 </body>
 
 </html>
