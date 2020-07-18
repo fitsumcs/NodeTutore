@@ -10,9 +10,21 @@
 <body>
 
     <h1>This is task List App</h1>
-    <h1>Today is
+    <p>Today is
         <%= day %>
-    </h1>
+    </p>
+    <!-- Task List -->
+    <ul>
+        <li>Buy Book</li>
+        <li>Eat Lunch</li>
+        <li>Eat Food</li>
+    </ul>
+    <!-- New Data Input Form -->
+    <form action="/" method="post">
+        <input type="text" name="newItem">
+        <input type="submit" value="Add New Task">
+
+    </form>
 </body>
 
 </html>
