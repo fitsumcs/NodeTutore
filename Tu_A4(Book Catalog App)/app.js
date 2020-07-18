@@ -57,7 +57,7 @@ yargs.command({
     command: 'display',
     describe: 'View All Available Books',
     handler() {
-        console.log("View all Books");
+        bookMethods.displayAllBooks();
     }
 });
 
