@@ -4,15 +4,11 @@ const path = require('path');
 const app = express();
 const port = process.env.PORT || 3000;
 
-// The Root page with get request // we can use also /
-app.get('', (req, res) => {
-    console.log(__dirname);
-    res.sendFile(path.join(__dirname, '/public/index.html'));
-    // res.send('hi');
+// The Serving Pages from public folder 
+const publicdir = path.join(__dirname, '/public');
+console.log(publicdir);
+app.use(express.static(publicdir));
 
-});
-
-console.log(__dirname);
 
 app.listen(port, () => {
     console.log(
