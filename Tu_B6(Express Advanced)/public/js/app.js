@@ -1,1 +1,1 @@
-console.log("clinet Side JS ....")
+console.log("clinet Side JS ....");
