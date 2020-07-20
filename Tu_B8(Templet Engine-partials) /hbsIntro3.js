@@ -27,6 +27,12 @@ app.get('/help', (req, res) => {
 
 
 });
+// The 404 page hbs
+app.get('*', (req, res) => {
+    res.render('404');
+
+
+});
 
 
 app.listen(port, () => {
