@@ -15,13 +15,13 @@ app.get('/', (req, res) => {
 
 
 });
-// The Root page hbs
+// The about page hbs
 app.get('/about', (req, res) => {
     res.render('about');
 
 
 });
-// The Root page hbs
+// The help page hbs
 app.get('/help', (req, res) => {
     res.render('help');
 
