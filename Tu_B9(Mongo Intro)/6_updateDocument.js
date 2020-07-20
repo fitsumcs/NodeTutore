@@ -27,6 +27,12 @@ MongoClient.connect(connectionURL, { useNewUrlParser: true }, (error, client) =>
         }
     }).
     then((result) => { console.log(result.modifiedCount); });
+    db.collection('users').updateOne({ _id: new ObjectId('5f15b22f50f6cf02aad14e00') }, {
+        $inc: {
+            age: 10
+        }
+    }).
+    then((result) => { console.log(result.modifiedCount); });
 
 
 
