@@ -4,6 +4,7 @@ const chalk = require('chalk');
 // Require mongodb native driver
 const mongodb = require("mongodb");
 const { MongoClient, ObjectId } = require("mongodb");
+const { result } = require('underscore');
 
 
 // Db info 
@@ -19,7 +20,14 @@ MongoClient.connect(connectionURL, { useNewUrlParser: true }, (error, client) =>
 
     const db = client.db(dbName);
 
-    // update one and many
+    // update one 
+    db.collection('users').updateOne({ _id: new ObjectId('5f15b22f50f6cf02aad14e00') }, {
+        $set: {
+            name: "Gunter"
+        }
+    }).
+    then((result) => { console.log(result.modifiedCount); });
+
 
 
 
