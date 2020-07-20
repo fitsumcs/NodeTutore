@@ -18,10 +18,20 @@ MongoClient.connect(connectionURL, { useNewUrlParser: true }, (error, client) =>
     const db = client.db(dbName);
 
     // create collection and insert one value 
-    db.collection('users').insertOne({
-        name: "Kebede 2",
-        age: 27
-    }, (err, result) => {
+    db.collection('users').insertMany([{
+            name: "Marke",
+            age: 25
+        },
+        {
+            name: "Math",
+            age: 43
+        },
+        {
+            name: "Gunter 2",
+            age: 27
+        }
+
+    ], (err, result) => {
         if (err) {
             console.log("Data Not Encoded...");
         }
