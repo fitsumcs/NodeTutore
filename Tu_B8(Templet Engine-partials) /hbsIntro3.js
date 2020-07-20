@@ -15,6 +15,18 @@ app.get('/', (req, res) => {
 
 
 });
+// The Root page hbs
+app.get('/about', (req, res) => {
+    res.render('about');
+
+
+});
+// The Root page hbs
+app.get('/help', (req, res) => {
+    res.render('help');
+
+
+});
 
 
 app.listen(port, () => {
