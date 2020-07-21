@@ -131,4 +131,22 @@ app.patch('/tasks/:id', async(req, res) => {
 
     }
 });
+// Removing Users 
+app.delete('/users/:id', async(req, res) => {
+
+    try {
+
+        const user = await User.findByIdAndDelete(req.params.id);
+        if (!user) {
+            return res.status(400).send("User Not Found");
+
+        }
+        res.send(user);
+
+    } catch (error) {
+        res.status(500).send(error);
+
+    }
+
+});
 app.listen(port, () => console.log("Server Has started"));
