@@ -1,7 +1,7 @@
 //require 
 const mongoose = require('mongoose');
 const validator = require('validator');
-const chalk = require('chalk')
+const chalk = require('chalk');
 
 // create connections and db 
 mongoose.connect('mongodb://127.0.0.1:27017/task-manager', {
@@ -18,10 +18,13 @@ const Task = mongoose.model('Task', {
             if (!validator.isAlpha(value)) {
                 throw new Error(chalk.red("It Must be Only String"));
             }
-        }
+        },
+        trim: true,
+        lowercase: true
     },
     completed: {
         type: String,
+        default: false,
         required: [true, chalk.red("Task completions state is Required ")]
     },
     task_Number: {
@@ -34,7 +37,7 @@ const Task = mongoose.model('Task', {
 //add document with wrong schema 
 const task1 = new Task({
     taskName: "Task",
-    task_Number: 12
+    task_Number: -2
 });
 // save the data 
 task1.save().then(() => { console.log("You Added one Task"); });
