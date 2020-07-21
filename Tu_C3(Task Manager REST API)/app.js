@@ -131,7 +131,25 @@ app.patch('/tasks/:id', async(req, res) => {
 
     }
 });
-// Removing Users 
+// Removing User
+app.delete('/tasks/:id', async(req, res) => {
+
+    try {
+
+        const task = await Task.findByIdAndDelete(req.params.id);
+        if (!task) {
+            return res.status(400).send("Task Not Found");
+
+        }
+        res.send(task);
+
+    } catch (error) {
+        res.status(500).send(error);
+
+    }
+
+});
+// Removing Task
 app.delete('/users/:id', async(req, res) => {
 
     try {
