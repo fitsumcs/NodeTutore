@@ -2,11 +2,15 @@ const express = require('express');
 require('./DB/mongooseConnections');
 const User = require('./models/users');
 const Task = require('./models/tasks');
+const userrouter = require('./routers/user');
 const app = express();
 const port = process.env.PORT || 8000;
 
+
+app.use(userrouter);
 // setting 
 app.use(express.json());
+
 // routes 
 app.post('/users', async(req, res) => {
     // create new user 
