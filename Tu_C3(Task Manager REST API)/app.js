@@ -29,11 +29,35 @@ app.post('/tasks', (req, res) => {
     });
 });
 
-// Get Request 
-app.get('/users', (rer, res) => {
+// Get Request for user
+app.get('/users', (req, res) => {
     User.find({}).then((users) => {
-        res.status(200).send(users);
-    });
+        res.send(users);
+    }).catch((err) => { res.status(500).send(err); });
+});
+app.get('/users/:id', (req, res) => {
+    const _id = req.params.id.toString();
+    User.findById(_id).then((user) => {
+        if (!user) {
+            return res.send("User Not Found");
+        }
+        res.send(user);
+    }).catch((err) => { res.status(500).send(err); });
+});
+// Get Request for Task
+app.get('/tasks', (req, res) => {
+    Task.find({}).then((tasks) => {
+        res.send(tasks);
+    }).catch((err) => { res.status(500).send(err); });
+});
+app.get('/tasks/:id', (req, res) => {
+    const _id = req.params.id.toString();
+    Task.findById(_id).then((task) => {
+        if (!task) {
+            return res.send("User Not Found");
+        }
+        res.send(task);
+    }).catch((err) => { res.status(500).send(err); });
 });
 
 app.listen(port, () => console.log("Server Has started"));
