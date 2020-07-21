@@ -29,4 +29,11 @@ app.post('/tasks', (req, res) => {
     });
 });
 
+// Get Request 
+app.get('/users', (rer, res) => {
+    User.find({}).then((users) => {
+        res.status(200).send(users);
+    });
+});
+
 app.listen(port, () => console.log("Server Has started"));
