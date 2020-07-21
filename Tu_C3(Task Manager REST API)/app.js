@@ -83,4 +83,28 @@ app.get('/tasks/:id', async(req, res) => {
     }
 });
 
+// Update resources 
+app.patch('/users/:id', async(req, res) => {
+    // validation for update query 
+    const updates = Object.keys(req.body);
+    const allowedOpr = ['name', 'email', 'password'];
+    const isAllwed = updates.every((update) => allowedOpr.includes(update));
+    if (!isAllwed) {
+        return res.status(400).send({ error: 'Invalid Operations!!' });
+    }
+
+    try {
+        const user = await User.findByIdAndUpdate(req.params.id, req.body, { new: true, runValidators: true });
+        // no user with that id
+        if (!user) {
+            return res.send("User Not Found");
+        }
+        res.send(user);
+
+
+    } catch (error) {
+        res.status(500).send(error);
+
+    }
+});
 app.listen(port, () => console.log("Server Has started"));
