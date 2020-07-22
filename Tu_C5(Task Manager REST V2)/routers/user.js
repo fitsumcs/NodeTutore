@@ -24,10 +24,7 @@ userrouter.post('/users/login', async(req, res) => {
     try {
         const user = await User.login(req.body.email, req.body.password);
 
-        res.send("Hey There ..");
-
-
-
+        res.send(user);
 
     } catch (error) {
         res.status(400).send(error);

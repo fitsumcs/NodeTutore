@@ -36,7 +36,19 @@ const userSchema = new mongoose.Schema({
 // Login Method
 userSchema.statics.login = async(email, password) => {
 
-    console.log("Tesing Loging");
+    const loginuser = await User.findOne({ email });
+
+    if (!loginuser) {
+        throw new Error("Account infromation is Incorrect");
+    }
+
+    const isMatch = await bcrypt.compare(password, loginuser.password);
+
+    if (!isMatch) {
+        throw new Error("Account infromation is Incorrect");
+    }
+
+    return loginuser;
 
 };
 // hashing
