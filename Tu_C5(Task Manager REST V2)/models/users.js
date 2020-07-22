@@ -12,6 +12,7 @@ const userSchema = new mongoose.Schema({
     },
     email: {
         type: String,
+        unique: true,
         required: true,
         trim: true,
         lowercase: true,
@@ -32,6 +33,13 @@ const userSchema = new mongoose.Schema({
     }
 });
 
+// Login Method
+userSchema.statics.login = async(email, password) => {
+
+    console.log("Tesing Loging");
+
+};
+// hashing
 userSchema.pre('save', async function(next) {
 
     // do staff 
@@ -47,5 +55,7 @@ userSchema.pre('save', async function(next) {
 });
 
 const User = mongoose.model('Users', userSchema);
+
+
 
 module.exports = User;
