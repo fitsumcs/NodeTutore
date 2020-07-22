@@ -3,7 +3,7 @@ const Task = require('../models/tasks');
 
 // router 
 const taskrouter = new express.Router();
-taskrouter.use(express.json());
+
 
 taskrouter.post('/tasks', async(req, res) => {
 

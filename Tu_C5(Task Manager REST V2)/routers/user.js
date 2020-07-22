@@ -3,7 +3,7 @@ const User = require('../models/users');
 
 // router 
 const userrouter = new express.Router();
-userrouter.use(express.json());
+
 // Create User routes 
 userrouter.post('/users', async(req, res) => {
     // create new user 

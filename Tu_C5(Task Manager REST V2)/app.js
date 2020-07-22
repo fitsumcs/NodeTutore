@@ -5,11 +5,11 @@ const taskrouter = require('./routers/task');
 const app = express();
 const port = process.env.PORT || 5000;
 
-
-app.use(userrouter);
-app.use(taskrouter);
 // setting 
 app.use(express.json());
+app.use(userrouter);
+app.use(taskrouter);
+
 
 
 
