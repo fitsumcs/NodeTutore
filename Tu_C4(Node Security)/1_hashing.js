@@ -11,6 +11,7 @@ async function generatePass() {
 
 }
 // Hashing is one way 
+// There is no return  back once hashed 
 async function matchPassword(pass) {
 
     const storedDbpassword = await bcrypt.hash("pass123", 8);
