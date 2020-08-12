@@ -37,12 +37,13 @@ taskrouter.get('/tasks', async(req, res) => {
 });
 
 // Get Request for single Task
-taskrouter.get('/tasks/:id', async(req, res) => {
+taskrouter.get('/tasks/:id', auth, async(req, res) => {
     const _id = req.params.id.toString();
     try {
-        const task = await Task.findById(_id);
+        // const task = await Task.findById(_id);
+        const task = await Task.findOne({ _id, creater: req.user._id });
         if (!task) {
-            return res.send("User Not Found");
+            return res.send("Task Not Found");
         }
         res.send(task);
     } catch (error) {
