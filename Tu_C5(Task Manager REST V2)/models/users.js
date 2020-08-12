@@ -40,6 +40,12 @@ const userSchema = new mongoose.Schema({
         }
     }]
 });
+// creaitng virtual field 
+userSchema.virtual('tasks', {
+    ref: 'Task',
+    localField: '_id',
+    foreignField: 'creater'
+});
 // sending only public data
 userSchema.methods.toJSON = function() {
 
