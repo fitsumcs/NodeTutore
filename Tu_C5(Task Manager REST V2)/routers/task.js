@@ -80,7 +80,7 @@ taskrouter.patch('/tasks/:id', async(req, res) => {
 });
 
 // Removing Task
-taskrouter.delete('/users/:id', async(req, res) => {
+taskrouter.delete('/tasks/:id', async(req, res) => {
 
     try {
 

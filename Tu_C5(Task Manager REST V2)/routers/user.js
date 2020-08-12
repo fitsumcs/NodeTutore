@@ -126,17 +126,13 @@ userrouter.patch('/users/:id', async(req, res) => {
     }
 });
 
-// Removing User
-userrouter.delete('/tasks/:id', async(req, res) => {
+// Removing User => change of URL since the id is not required
+userrouter.delete('/users/me', auth, async(req, res) => {
 
     try {
 
-        const task = await Task.findByIdAndDelete(req.params.id);
-        if (!task) {
-            return res.status(400).send("Task Not Found");
-
-        }
-        res.send(task);
+        await req.user.remove();
+        res.send(req.user);
 
     } catch (error) {
         res.status(500).send(error);
