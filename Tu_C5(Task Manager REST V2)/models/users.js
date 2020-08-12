@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const validaror = require('validator');
 const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
 
 // creating schema 
 const userSchema = new mongoose.Schema({
@@ -32,6 +33,16 @@ const userSchema = new mongoose.Schema({
 
     }
 });
+
+// Token generation method 
+userSchema.methods.generateToken = async function() {
+
+    const token = jwt.sign({ _id: this._id.toString() }, 'mysigniture');
+
+    return token;
+
+
+};
 
 // Login Method
 userSchema.statics.login = async(email, password) => {
