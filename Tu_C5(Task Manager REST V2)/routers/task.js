@@ -96,12 +96,12 @@ taskrouter.delete('/tasks/:id', auth, async(req, res) => {
 
     try {
 
-        const user = await User.findOneAndDelete({ _id: req.params.id, creater: req.user._id });
-        if (!user) {
-            return res.status(400).send("User Not Found");
+        const task = await Task.findOneAndDelete({ _id: req.params.id, creater: req.user._id });
+        if (!task) {
+            return res.status(400).send("Task Not Found");
 
         }
-        res.send(user);
+        res.send(task);
 
     } catch (error) {
         res.status(500).send(error);
