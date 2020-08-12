@@ -95,7 +95,7 @@ userrouter.get('/users/me', auth, async(req, res) => {
 // });
 
 // Update user resources 
-userrouter.patch('/users/:id', async(req, res) => {
+userrouter.patch('/users/me', auth, async(req, res) => {
     // validation for update query 
     const updates = Object.keys(req.body);
     const allowedOpr = ['name', 'email', 'password'];
@@ -105,23 +105,13 @@ userrouter.patch('/users/:id', async(req, res) => {
     }
 
     try {
-
-        const user = await User.findById(req.params.id);
-
-        updates.forEach((update) => user[update] = req.body[update]);
-
-        await user.save();
-
-        // const user = await User.findByIdAndUpdate(req.params.id, req.body, { new: true, runValidators: true });
-        // no user with that id
-        if (!user) {
-            return res.send("User Not Found");
-        }
-        res.send(user);
+        updates.forEach((update) => req.user[update] = req.body[update]);
+        await req.user.save();
+        res.send(req.user);
 
 
     } catch (error) {
-        res.status(500).send(error);
+        res.status(500).send("error");
 
     }
 });
