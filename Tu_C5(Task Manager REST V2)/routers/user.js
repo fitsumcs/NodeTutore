@@ -80,19 +80,19 @@ userrouter.get('/users/me', auth, async(req, res) => {
 
 });
 
-// Get Request for single users
-userrouter.get('/users/:id', async(req, res) => {
-    const _id = req.params.id.toString();
-    try {
-        constuser = await User.findById(_id);
-        if (!user) {
-            return res.send("User Not Found");
-        }
-        res.send(user);
-    } catch (error) {
-        res.status(500).send(error);
-    }
-});
+// Get Request for single users ==> No Longer Required
+// userrouter.get('/users/:id', async(req, res) => {
+//     const _id = req.params.id.toString();
+//     try {
+//         constuser = await User.findById(_id);
+//         if (!user) {
+//             return res.send("User Not Found");
+//         }
+//         res.send(user);
+//     } catch (error) {
+//         res.status(500).send(error);
+//     }
+// });
 
 // Update user resources 
 userrouter.patch('/users/:id', async(req, res) => {
