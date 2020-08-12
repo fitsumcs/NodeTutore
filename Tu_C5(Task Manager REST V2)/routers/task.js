@@ -29,6 +29,9 @@ taskrouter.post('/tasks', auth, async(req, res) => {
 taskrouter.get('/tasks', auth, async(req, res) => {
     try {
         const tasks = await Task.find({ creater: req.user._id });
+
+        // other way doing it ..:)
+
         // await req.user.populate('tasks').execPopulate();
         // res.send(req.user.tasks);
 
@@ -58,7 +61,7 @@ taskrouter.get('/tasks/:id', auth, async(req, res) => {
 
 
 // Update task resources 
-taskrouter.patch('/tasks/:id', async(req, res) => {
+taskrouter.patch('/tasks/:id', auth, async(req, res) => {
     // validation for update query 
     const updates = Object.keys(req.body);
     const allowedOpr = ['completed', 'description'];
@@ -68,17 +71,17 @@ taskrouter.patch('/tasks/:id', async(req, res) => {
     }
 
     try {
-        const task = await Task.findById(req.params.id);
-
-        updates.forEach((update) => task[update] = req.body[update]);
-
-        await task.save();
+        const task = await Task.findOne({ _id: req.params.id, creater: req.user._id });
 
         // const task = await Task.findByIdAndUpdate(req.params.id, req.body, { new: true, runValidators: true });
         // no user with that id
         if (!task) {
             return res.send("Task Not Found");
         }
+
+        updates.forEach((update) => task[update] = req.body[update]);
+        await task.save();
+
         res.send(task);
 
 
@@ -89,11 +92,11 @@ taskrouter.patch('/tasks/:id', async(req, res) => {
 });
 
 // Removing Task
-taskrouter.delete('/tasks/:id', async(req, res) => {
+taskrouter.delete('/tasks/:id', auth, async(req, res) => {
 
     try {
 
-        const user = await User.findByIdAndDelete(req.params.id);
+        const user = await User.findOneAndDelete({ _id: req.params.id, creater: req.user._id });
         if (!user) {
             return res.status(400).send("User Not Found");
 
