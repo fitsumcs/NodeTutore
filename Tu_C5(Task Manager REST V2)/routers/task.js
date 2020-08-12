@@ -26,10 +26,14 @@ taskrouter.post('/tasks', auth, async(req, res) => {
 
 
 // Get Request for all Tasks
-taskrouter.get('/tasks', async(req, res) => {
+taskrouter.get('/tasks', auth, async(req, res) => {
     try {
-        const tasks = await Task.find({});
+        const tasks = await Task.find({ creater: req.user._id });
+        // await req.user.populate('tasks').execPopulate();
+        // res.send(req.user.tasks);
+
         res.send(tasks);
+
 
     } catch (error) {
         res.status(500).send(error);
