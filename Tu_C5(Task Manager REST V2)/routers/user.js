@@ -53,6 +53,20 @@ userrouter.post('/users/logout', auth, async(req, res) => {
     }
 
 });
+// logout 
+userrouter.post('/users/logoutAll', auth, async(req, res) => {
+
+    try {
+        req.user.tokens = [];
+        await req.user.save();
+
+        res.send();
+
+    } catch (error) {
+        res.status(500).send();
+    }
+
+});
 // Get Request for all users ==> changed to myprofile
 userrouter.get('/users/me', auth, async(req, res) => {
 
