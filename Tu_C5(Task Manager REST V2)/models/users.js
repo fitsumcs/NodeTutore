@@ -3,6 +3,7 @@ const validaror = require('validator');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
+
 // creating schema 
 const userSchema = new mongoose.Schema({
     name: {
@@ -39,7 +40,17 @@ const userSchema = new mongoose.Schema({
         }
     }]
 });
+// sending only public data
+userSchema.methods.toJSON = function() {
 
+    const pubdata = this.toObject();
+
+    delete pubdata.password;
+    delete pubdata.tokens;
+
+    return pubdata;
+
+};
 // Token generation method 
 userSchema.methods.generateToken = async function() {
 
