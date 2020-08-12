@@ -31,13 +31,22 @@ const userSchema = new mongoose.Schema({
         minlength: 5,
         trim: true
 
-    }
+    },
+    tokens: [{
+        token: {
+            type: String,
+            required: true
+        }
+    }]
 });
 
 // Token generation method 
 userSchema.methods.generateToken = async function() {
 
     const token = jwt.sign({ _id: this._id.toString() }, 'mysigniture');
+
+    this.tokens = this.tokens.concat({ token });
+    await this.save();
 
     return token;
 
