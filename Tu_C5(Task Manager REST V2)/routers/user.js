@@ -36,7 +36,7 @@ userrouter.post('/users/login', async(req, res) => {
 
 });
 
-// Get Request for all users
+// Get Request for all users ==> changed to myprofile
 userrouter.get('/users/me', auth, async(req, res) => {
 
     // try {
