@@ -32,7 +32,15 @@ taskrouter.get('/tasks', auth, async(req, res) => {
 
         // other way doing it ..:)
 
-        await req.user.populate('tasks').execPopulate();
+        match = {};
+        if (req.query.completed) {
+            match.completed = req.query.completed === 'true';
+        }
+
+        await req.user.populate({
+            path: 'tasks',
+            match
+        }).execPopulate();
         res.send(req.user.tasks);
 
         // res.send(tasks);
