@@ -16,7 +16,7 @@ const taskSchema = new mongoose.Schema({
     creater: {
         type: mongoose.Schema.Types.ObjectId,
         required: true,
-        ref: 'User'
+        ref: 'Users'
     }
 }, {
     timestamps: true

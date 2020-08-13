@@ -46,7 +46,7 @@ const userSchema = new mongoose.Schema({
 });
 // creaitng virtual field 
 userSchema.virtual('tasks', {
-    ref: 'Task',
+    ref: 'Tasks',
     localField: '_id',
     foreignField: 'creater'
 });
