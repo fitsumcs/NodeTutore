@@ -32,9 +32,14 @@ taskrouter.get('/tasks', auth, async(req, res) => {
 
         // other way doing it ..:)
 
-        match = {};
+        const match = {};
         if (req.query.completed) {
             match.completed = req.query.completed === 'true';
+        }
+        const sort = {};
+        if (req.query.sortBy) {
+            const parts = req.query.sortBy.split(':');
+            sort[parts[0]] = parts[1] === 'desc' ? -1 : 1;
         }
 
         await req.user.populate({
@@ -42,7 +47,8 @@ taskrouter.get('/tasks', auth, async(req, res) => {
             match,
             options: {
                 limit: parseInt(req.query.limit),
-                skip: parseInt(req.query.skip)
+                skip: parseInt(req.query.skip),
+                sort
             }
         }).execPopulate();
         res.send(req.user.tasks);
