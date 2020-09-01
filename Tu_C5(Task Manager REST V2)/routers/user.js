@@ -11,7 +11,7 @@ const upload = multer({
     },
     fileFilter(req, file, cb) {
         if (!file.originalname.match(/\.(jpg|jpeg|png)$/)) {
-            return cb(new Error('Make sure it is word'));
+            return cb(new Error('Make sure it is Image'));
         }
         cb(undefined, true);
 
@@ -150,6 +150,8 @@ userrouter.delete('/users/me', auth, async(req, res) => {
 // adding profile picture for user 
 userrouter.post('/users/me/avatar', upload.single('avatar'), (req, res) => {
     res.send();
+}, (error, req, res, next) => {
+    res.status(400).send({ error: error.message });
 });
 
 module.exports = userrouter;
