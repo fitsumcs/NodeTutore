@@ -5,12 +5,12 @@ const multer = require('multer');
 
 // config multer folder 
 const upload = multer({
-    dest: 'profile_pic',
+
     limits: {
         fileSize: 1000000
     },
     fileFilter(req, file, cb) {
-        if (!file.originalname.match(/\.(jpg|jpeg|png)$/)) {
+        if (!file.originalname.match(/\.(jpg|jpeg|png|PNG)$/)) {
             return cb(new Error('Make sure it is Image'));
         }
         cb(undefined, true);
@@ -148,7 +148,9 @@ userrouter.delete('/users/me', auth, async(req, res) => {
 });
 
 // adding profile picture for user 
-userrouter.post('/users/me/avatar', upload.single('avatar'), (req, res) => {
+userrouter.post('/users/me/avatar', auth, upload.single('avatar'), async(req, res) => {
+    req.user.avatar = req.file.buffer;
+    await req.user.save();
     res.send();
 }, (error, req, res, next) => {
     res.status(400).send({ error: error.message });
