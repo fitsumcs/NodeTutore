@@ -16,4 +16,4 @@ app.post('/upload', upload.single('upload'), (req, res) => {
 
 
 
-app.listen(2000, () => { console.log('Server Started'); })
+app.listen(2000, () => { console.log('Server Started'); });
