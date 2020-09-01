@@ -60,6 +60,7 @@ userSchema.methods.toJSON = function() {
 
     delete pubdata.password;
     delete pubdata.tokens;
+    delete pubdata.avatar;
 
     return pubdata;
 
