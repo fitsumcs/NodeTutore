@@ -1,6 +1,12 @@
 const express = require('express');
 const User = require('../models/users');
 const auth = require('../middleware/auth');
+const multer = require('multer');
+
+// config multer folder 
+const upload = multer({
+    dest: 'profile_pic'
+});
 
 // router 
 const userrouter = new express.Router();
@@ -129,6 +135,11 @@ userrouter.delete('/users/me', auth, async(req, res) => {
 
     }
 
+});
+
+// adding profile picture for user 
+userrouter.post('/users/me/avatar', upload.single('avatar'), (req, res) => {
+    res.send();
 });
 
 module.exports = userrouter;
