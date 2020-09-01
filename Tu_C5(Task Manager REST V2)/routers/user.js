@@ -5,7 +5,17 @@ const multer = require('multer');
 
 // config multer folder 
 const upload = multer({
-    dest: 'profile_pic'
+    dest: 'profile_pic',
+    limits: {
+        fileSize: 1000000
+    },
+    fileFilter(req, file, cb) {
+        if (!file.originalname.match(/\.(jpg|jpeg|png)$/)) {
+            return cb(new Error('Make sure it is word'));
+        }
+        cb(undefined, true);
+
+    }
 });
 
 // router 
