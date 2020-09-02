@@ -2,6 +2,7 @@ const express = require('express');
 const User = require('../models/users');
 const auth = require('../middleware/auth');
 const multer = require('multer');
+// const sharp = require('sharp');
 
 // config multer folder 
 const upload = multer({
@@ -149,6 +150,7 @@ userrouter.delete('/users/me', auth, async(req, res) => {
 
 // adding profile picture for user 
 userrouter.post('/users/me/avatar', auth, upload.single('avatar'), async(req, res) => {
+    // const buffer = await sharp(req.file.buffer).resize({ width: 250, height: 250 }).png().toBuffer();
     req.user.avatar = req.file.buffer;
     await req.user.save();
     res.send();
