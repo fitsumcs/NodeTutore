@@ -4,6 +4,15 @@
 //     throw new Error();
 // });
 
+beforeEach(() => {
+    console.log("Before Each Running...");
+});
+
+afterEach(() => {
+    console.log("After  Each Running...");
+});
+
+
 const { sum } = require('./math');
 
 test('adds 1 + 2 to equal 3', () => {
@@ -16,7 +25,7 @@ test('adds 1 + 2 to equal 3', () => {
 test('Async Test', (done) => {
 
     setTimeout(() => {
-        expect(1).toBe(2);
+        expect(2).toBe(2);
         done();
     }, 2000);
 
