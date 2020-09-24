@@ -27,7 +27,7 @@ app.get('/about', (req, res) => {
 });
 // get all notes 
 app.get('/allnotes', (req, res) => {
-    Note.find({}, (err, notes) => {
+    Note.find({}).sort({ date: 'desc' }).exec((err, notes) => {
         if (err) {
             return console.log(err);
         }
