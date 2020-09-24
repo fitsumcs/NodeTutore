@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const path = require('path');
 const hbs = require('hbs');
 const body_parser = require('body-parser');
+const methodOverride = require('method-override');
 const Note = require('./models/note');
 
 
@@ -11,10 +12,11 @@ const PORT = process.env.PORT || 3000;
 const app = express();
 
 //database 
-mongoose.connect('mongodb://localhost/note_taker', { useUnifiedTopology: true, useNewUrlParser: true });
+mongoose.connect('mongodb://localhost/note_taker', { useUnifiedTopology: true, useNewUrlParser: true, useFindAndModify: false });
 
 // middleware config 
 app.use(body_parser.urlencoded({ extended: false }));
+app.use(methodOverride('_method'));
 // view 
 app.set('view engine', 'hbs');
 hbs.registerPartials(path.join(__dirname, '/views/partials'));
@@ -67,8 +69,31 @@ app.post('/notes', (req, res) => {
         });
 
     }
-
-
 });
 
+// edit 
+app.get('/notes/:id', (req, res) => {
+    Note.findById(req.params.id, (err, note) => {
+        if (err) {
+            return console.log(err);
+        }
+        res.render("edit_notes", {
+            note
+        });
+    });
+
+});
+app.put('/notes/:id', (req, res) => {
+    const note = {
+        title: req.body.title,
+        description: req.body.description
+    };
+    Note.findOneAndUpdate({ _id: req.params.id }, note, (err, note) => {
+        if (err) {
+            return console.log(err);
+        }
+        res.redirect('/allnotes');
+    });
+
+});
 app.listen(PORT, () => console.log("Server Started!"));
