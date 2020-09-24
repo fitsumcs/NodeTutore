@@ -83,6 +83,7 @@ app.get('/notes/:id', (req, res) => {
     });
 
 });
+//edit
 app.put('/notes/:id', (req, res) => {
     const note = {
         title: req.body.title,
@@ -95,5 +96,15 @@ app.put('/notes/:id', (req, res) => {
         res.redirect('/allnotes');
     });
 
+});
+// delete
+app.delete('/notes/:id', (req, res) => {
+
+    Note.deleteOne({ _id: req.params.id }, (err) => {
+        if (err) {
+            return console.log(err);
+        }
+        res.redirect('/allnotes');
+    });
 });
 app.listen(PORT, () => console.log("Server Started!"));

@@ -2,9 +2,13 @@
     <div class="container">
       {{#each notes}}
        <div class="card card-body mb-2">
-        <h4>{{title}}<h4>
-         <p class="text-justify">{{description}}</p>
-         <a href="/notes/{{_id}}" class="card-link">Edit Note</a>
+        <h4 class="font-weight-bold">{{title}}<h4>
+         <p class="text-justify font-weight-normal">{{description}}</p>
+         <a class=" btn btn-info" href="/notes/{{_id}}" class="card-link">Edit Note</a>
+         <form class="d-inline" action="/notes/{{_id}}?_method=DELETE" method="post">
+         <input class=" btn btn-danger " type="submit" value="Delete Note">
+         </form>
+       
     </div>
       {{else}}
       <p>You have not yet saved a note!!</p>
