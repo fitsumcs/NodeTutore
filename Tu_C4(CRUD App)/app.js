@@ -4,6 +4,8 @@ const path = require('path');
 const hbs = require('hbs');
 const body_parser = require('body-parser');
 const methodOverride = require('method-override');
+const expressSession = require('express-session');
+const flash = require('connect-flash');
 const Note = require('./models/note');
 
 
@@ -17,6 +19,23 @@ mongoose.connect('mongodb://localhost/note_taker', { useUnifiedTopology: true, u
 // middleware config 
 app.use(body_parser.urlencoded({ extended: false }));
 app.use(methodOverride('_method'));
+// session 
+app.use(expressSession({
+    secret: "thisissecret",
+    resave: false,
+    saveUninitialized: false
+}));
+
+app.use(flash());
+
+// global variables 
+app.use((req, res, next) => {
+    res.locals.success_msg = req.flash('success_msg');
+    res.locals.error_msg = req.flash('error_msg');
+    res.locals.error = req.flash('error');
+    next();
+});
+
 // view 
 app.set('view engine', 'hbs');
 hbs.registerPartials(path.join(__dirname, '/views/partials'));
@@ -65,6 +84,7 @@ app.post('/notes', (req, res) => {
             if (err) {
                 return console.log(err);
             }
+            req.flash('success_msg', "Note Added !!");
             res.redirect('/allnotes');
         });
 
@@ -93,6 +113,7 @@ app.put('/notes/:id', (req, res) => {
         if (err) {
             return console.log(err);
         }
+
         res.redirect('/allnotes');
     });
 
@@ -104,6 +125,7 @@ app.delete('/notes/:id', (req, res) => {
         if (err) {
             return console.log(err);
         }
+        req.flash('success_msg', "Note Deleted !!");
         res.redirect('/allnotes');
     });
 });
