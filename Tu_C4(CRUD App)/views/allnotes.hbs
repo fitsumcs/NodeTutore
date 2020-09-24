@@ -1,9 +1,13 @@
     {{> header}}
     <div class="container">
       {{#each notes}}
-      <p>Title : {{title}}</p> 
-      <p>Description :  {{description}}</p> 
+       <div class="card card-body mb-2">
+        <h4>{{title}}<h4>
+         <p class="text-justify">{{description}}</p>
+    </div>
       {{else}}
+      <p>You have not yet saved a note!!</p>
       {{/each}}
  
+</div>
     {{> footer}}
