@@ -1,5 +1,6 @@
 const express = require('express');
 const Note = require('../models/note');
+const isLogged = require('../middleware');
 const router = express.Router();
 
 
@@ -14,10 +15,10 @@ router.get('/allnotes', (req, res) => {
 
 });
 // Notes form
-router.get('/notes', (req, res) => {
+router.get('/notes', isLogged, (req, res) => {
     res.render("new_notes");
 });
-router.post('/notes', (req, res) => {
+router.post('/notes', isLogged, (req, res) => {
 
     const errors = [];
     if (!req.body.title) {
@@ -49,7 +50,7 @@ router.post('/notes', (req, res) => {
 });
 
 // edit 
-router.get('/notes/:id', (req, res) => {
+router.get('/notes/:id', isLogged, (req, res) => {
     Note.findById(req.params.id, (err, note) => {
         if (err) {
             return console.log(err);
@@ -61,7 +62,7 @@ router.get('/notes/:id', (req, res) => {
 
 });
 //edit
-router.put('/notes/:id', (req, res) => {
+router.put('/notes/:id', isLogged, (req, res) => {
     const note = {
         title: req.body.title,
         description: req.body.description
@@ -76,7 +77,7 @@ router.put('/notes/:id', (req, res) => {
 
 });
 // delete
-router.delete('/notes/:id', (req, res) => {
+router.delete('/notes/:id', isLogged, (req, res) => {
 
     Note.deleteOne({ _id: req.params.id }, (err) => {
         if (err) {
