@@ -21,7 +21,6 @@ function passportConfig() {
                     return done(err);
                 }
                 if (result) {
-                    console.log(user);
                     return done(null, user);
                 } else {
                     return done(null, false, { message: 'Incorrect username or password!' });

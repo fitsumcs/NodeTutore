@@ -6,7 +6,7 @@ const router = express.Router();
 
 // get all notes 
 router.get('/allnotes', (req, res) => {
-    Note.find({}).sort({ date: 'desc' }).exec((err, notes) => {
+    Note.find({ user: req.user.id }).sort({ date: 'desc' }).exec((err, notes) => {
         if (err) {
             return console.log(err);
         }
