@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const path = require('path');
 const hbs = require('hbs');
 const body_parser = require('body-parser');
+const passport = require('passport');
 const methodOverride = require('method-override');
 const expressSession = require('express-session');
 const flash = require('connect-flash');
@@ -11,6 +12,10 @@ const flash = require('connect-flash');
 // routes
 const noteRouter = require('./routes/notes');
 const authRouter = require('./routes/auth');
+
+
+// passport config 
+require('./config/passportConfig')();
 
 const PORT = process.env.PORT || 3000;
 
@@ -28,7 +33,9 @@ app.use(expressSession({
     resave: false,
     saveUninitialized: false
 }));
-
+//passport middleware
+app.use(passport.initialize());
+app.use(passport.session());
 app.use(flash());
 
 // global variables 
