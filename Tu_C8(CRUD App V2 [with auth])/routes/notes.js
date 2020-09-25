@@ -1,6 +1,6 @@
 const express = require('express');
 const Note = require('../models/note');
-const isLogged = require('../middleware');
+const { isLogged, isAuthorized } = require('../middleware');
 const router = express.Router();
 
 
@@ -51,7 +51,7 @@ router.post('/notes', isLogged, (req, res) => {
 });
 
 // edit 
-router.get('/notes/:id', isLogged, (req, res) => {
+router.get('/notes/:id', isLogged, isAuthorized, (req, res) => {
     Note.findById(req.params.id, (err, note) => {
         if (err) {
             return console.log(err);
@@ -63,7 +63,7 @@ router.get('/notes/:id', isLogged, (req, res) => {
 
 });
 //edit
-router.put('/notes/:id', isLogged, (req, res) => {
+router.put('/notes/:id', isLogged, isAuthorized, (req, res) => {
     const note = {
         title: req.body.title,
         description: req.body.description
@@ -78,7 +78,7 @@ router.put('/notes/:id', isLogged, (req, res) => {
 
 });
 // delete
-router.delete('/notes/:id', isLogged, (req, res) => {
+router.delete('/notes/:id', isLogged, isAuthorized, (req, res) => {
 
     Note.deleteOne({ _id: req.params.id }, (err) => {
         if (err) {

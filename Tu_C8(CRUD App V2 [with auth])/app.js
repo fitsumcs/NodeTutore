@@ -17,7 +17,7 @@ const authRouter = require('./routes/auth');
 // passport config 
 require('./config/passportConfig')();
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 5000;
 
 const app = express();
 
@@ -52,7 +52,6 @@ app.set('view engine', 'hbs');
 hbs.registerPartials(path.join(__dirname, '/views/partials'));
 
 app.get('/', (req, res) => {
-
     res.render("index");
 });
 app.get('/about', (req, res) => {
