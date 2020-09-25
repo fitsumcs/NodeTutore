@@ -43,6 +43,7 @@ app.use((req, res, next) => {
     res.locals.success_msg = req.flash('success_msg');
     res.locals.error_msg = req.flash('error_msg');
     res.locals.error = req.flash('error');
+    res.locals.user = req.user || null;
     next();
 });
 
@@ -51,6 +52,7 @@ app.set('view engine', 'hbs');
 hbs.registerPartials(path.join(__dirname, '/views/partials'));
 
 app.get('/', (req, res) => {
+
     res.render("index");
 });
 app.get('/about', (req, res) => {
