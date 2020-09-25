@@ -36,7 +36,8 @@ router.post('/notes', isLogged, (req, res) => {
     } else {
         const newNote = new Note({
             title: req.body.title,
-            description: req.body.description
+            description: req.body.description,
+            user: req.user.id
         });
         newNote.save((err, note) => {
             if (err) {
