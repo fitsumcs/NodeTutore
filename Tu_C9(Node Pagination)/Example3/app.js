@@ -1,5 +1,8 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const ejs = require('ejs');
+
+const pagination = require('./paginationMiddleware');
 const User = require('./users');
 
 const port = process.env.PORT || 5000;
@@ -9,7 +12,7 @@ const app = express();
 app.set('view engine', 'ejs');
 
 // mongoose 
-mongoose.connect('mongodb://localhost/pagination', { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect('mongodb://localhost/pagination');
 
 
 

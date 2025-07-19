@@ -1,14 +1,14 @@
-const faker = require("faker");
+const { faker } = require("@faker-js/faker");
 
 
 // Random Name 
-console.log(faker.name.findName());
+console.log(faker.person.fullName());
 
 // Random Email 
 console.log(faker.internet.email());
 
-// Randome Card 
-console.log(faker.helpers.createCard());
+// Random Credit Card 
+console.log(faker.finance.creditCardNumber());
 
 // Random Product Name and Price
 console.log("############################################################");

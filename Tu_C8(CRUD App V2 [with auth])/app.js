@@ -22,7 +22,7 @@ const PORT = process.env.PORT || 5000;
 const app = express();
 
 //database 
-mongoose.connect('mongodb://localhost/note_taker', { useUnifiedTopology: true, useNewUrlParser: true, useFindAndModify: false });
+mongoose.connect('mongodb://localhost/note_taker');
 
 // middleware config 
 app.use(body_parser.urlencoded({ extended: false }));

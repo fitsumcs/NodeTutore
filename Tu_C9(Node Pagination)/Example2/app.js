@@ -10,7 +10,7 @@ const port = process.env.PORT || 5000;
 const app = express();
 
 // mongoose 
-mongoose.connect('mongodb://localhost/pagination', { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect('mongodb://localhost/pagination');
 //populate data
 const db = mongoose.connection;
 
