@@ -52,7 +52,7 @@
         "passport-local-mongoose": "^8.0.0",
         "superheroes": "^4.0.0",
         "supervillains": "^4.0.0",
-        "underscore": "^1.13.7",
+        "underscore": "^1.13.8",
         "validator": "^13.15.22",
         "yargs": "^18.0.0"
     },
