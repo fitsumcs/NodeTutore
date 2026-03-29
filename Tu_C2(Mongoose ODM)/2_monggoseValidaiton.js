@@ -1,7 +1,7 @@
 //require 
 const mongoose = require('mongoose');
 const validator = require('validator');
-const chalk = require('chalk');
+const chalk = require('chalk').default;
 
 // create connections and db 
 mongoose.connect('mongodb://127.0.0.1:27017/task-manager');

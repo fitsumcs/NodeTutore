@@ -1,7 +1,7 @@
 //req
 const fs = require('fs');
 const path = require('path');
-const chalk = require('chalk');
+const chalk = require('chalk').default;
 
 function addBook(title, author) {
 

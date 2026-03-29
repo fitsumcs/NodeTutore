@@ -3,14 +3,15 @@ const yargs = require('yargs');
 
 const bookMethods = require('./util/books');
 
+const cli = yargs(process.argv.slice(2));
 
 // custome yargs version
-yargs.version('1.1.0');
+cli.version('1.1.0');
 
 // setting commands 
 
 //  Adding New Book 
-yargs.command({
+cli.command({
     command: 'add',
     describe: 'Add New Book',
     builder: {
@@ -32,7 +33,7 @@ yargs.command({
 });
 
 // Remove new Book
-yargs.command({
+cli.command({
     command: 'remove',
     describe: 'remove New Book',
 
@@ -53,7 +54,7 @@ yargs.command({
 
 
 // Display all books 
-yargs.command({
+cli.command({
     command: 'display',
     describe: 'View All Available Books',
     handler() {
@@ -62,7 +63,7 @@ yargs.command({
 });
 
 // view single book
-yargs.command({
+cli.command({
     command: 'view',
     describe: 'view a Single Book',
     handler() {
@@ -70,6 +71,6 @@ yargs.command({
     }
 });
 
-yargs.parse();
+cli.parse();
 
-// console.log(yargs.argv);
+// console.log(cli.argv);

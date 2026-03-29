@@ -1,6 +1,6 @@
 // CRUD on Mongo DB
 // other module
-const chalk = require('chalk');
+const chalk = require('chalk').default;
 // Require mongodb native driver
 const mongodb = require("mongodb");
 const { MongoClient, ObjectId } = require("mongodb");

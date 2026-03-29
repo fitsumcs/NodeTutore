@@ -1,5 +1,3 @@
-const { option } = require("yargs");
-
 function dateFormater() {
 
     let day = new Date();

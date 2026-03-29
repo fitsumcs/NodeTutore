@@ -1,4 +1,4 @@
-const chalk = require("chalk");
+const chalk = require("chalk").default;
 
 // Test Text Color  
 console.log(chalk.blue('This is Blue Text ..'));
