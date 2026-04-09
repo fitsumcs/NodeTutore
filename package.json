@@ -36,7 +36,7 @@
         "express-jwt": "^8.5.1",
         "express-session": "^1.19.0",
         "@faker-js/faker": "^10.4.0",
-        "hbs": "^4.2.0",
+        "hbs": "^4.2.1",
         "is-image-url": "^1.1.8",
         "jsonwebtoken": "^9.0.3",
         "md5": "^2.3.0",
