@@ -112,11 +112,9 @@ userSchema.pre('save', async function(next) {
 });
 
 // delete user task when user is deleted 
-userSchema.pre('remove', async function(next) {
-
+userSchema.pre('deleteOne', { document: true, query: false }, async function() {
 
     await Task.deleteMany({ creater: this._id });
-    next();
 });
 const User = mongoose.model('Users', userSchema);
 

@@ -24,9 +24,8 @@
     },
     "homepage": "https://github.com/fitsumcs/NodeTutore#readme",
     "dependencies": {
-        "bcrypt": "^6.0.0",
         "bcryptjs": "^3.0.3",
-        "body-parser": "^2.2.2",
+        "body-parser": "^2.3.0",
         "cat-me": "^1.0.3",
         "chalk": "^5.6.2",
         "connect-flash": "^0.1.1",
@@ -35,16 +34,16 @@
         "express": "^5.2.1",
         "express-jwt": "^8.5.1",
         "express-session": "^1.19.0",
-        "@faker-js/faker": "^10.4.0",
+        "@faker-js/faker": "^10.5.0",
         "hbs": "^4.2.1",
         "is-image-url": "^1.1.8",
         "jsonwebtoken": "^9.0.3",
-        "md5": "^2.3.0",
         "method-override": "^3.0.0",
-        "mongodb": "^7.2.0",
-        "mongoose": "^9.6.2",
-        "multer": "^2.1.1",
+        "mongodb": "^7.3.0",
+        "mongoose": "^9.7.1",
+        "multer": "^2.2.0",
         "nodemailer": "^9.0.1",
+        "probe-image-size": "^7.3.0",
         "passport": "^0.7.0",
         "passport-google-oauth20": "^2.0.0",
         "passport-local": "^1.0.0",
@@ -62,6 +61,9 @@
     "engines": {
         "node": ">=20.19.0",
         "npm": ">=10.0.0"
+    },
+    "overrides": {
+        "js-yaml": "^4.1.2"
     },
     "jest": {
         "collectCoverageFrom": [
