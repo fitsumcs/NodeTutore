@@ -1,5 +1,5 @@
 const isImageUrl = require('is-image-url');
-const requestImageSize = require('request-image-size');
+const probe = require('probe-image-size');
 
 //urls
 const url1 = "https://images.unsplash.com/photo-1600678217111-a23a045721e1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60";
@@ -16,7 +16,7 @@ function check_image1(url) {
 async function check_image2(url) {
 
     try {
-        const imageurl = await requestImageSize(url);
+        const imageurl = await probe(url);
         console.log(imageurl);
         if (imageurl && imageurl.type === 'svg') {
             console.log("Not Image");

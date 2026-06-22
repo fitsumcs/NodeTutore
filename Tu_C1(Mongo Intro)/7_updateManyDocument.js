@@ -12,7 +12,7 @@ const connectionURL = 'mongodb://127.0.0.1:27017';
 const dbName = 'users-info';
 
 // connecting to db in Async
-MongoClient.connect(connectionURL, { useNewUrlParser: true }, (error, client) => {
+MongoClient.connect(connectionURL, (error, client) => {
     if (error) {
         return console.log("Unable to connect to DB");
     }

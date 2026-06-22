@@ -1,13 +1,12 @@
 const http = require("http");
 const fs = require("fs");
-const url = require("url");
 const path = require("path");
 
 const server = http.createServer((req, res) => {
 
-    const q = url.parse(req.url, true);
-    let fileName = path.join(__dirname, q.pathname) + ".html";
-    if (q.pathname === "/") fileName = path.join(__dirname, '/index.html');
+    const parsedUrl = new URL(req.url, 'http://localhost');
+    let fileName = path.join(__dirname, parsedUrl.pathname) + ".html";
+    if (parsedUrl.pathname === "/") fileName = path.join(__dirname, '/index.html');
 
 
     fs.readFile(fileName, (err, data) => {

@@ -138,7 +138,7 @@ userrouter.delete('/users/me', auth, async(req, res) => {
 
     try {
 
-        await req.user.remove();
+        await req.user.deleteOne();
         res.send(req.user);
 
     } catch (error) {
