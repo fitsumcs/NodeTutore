@@ -40,7 +40,7 @@
         "jsonwebtoken": "^9.0.3",
         "method-override": "^3.0.0",
         "mongodb": "^7.3.0",
-        "mongoose": "^9.7.2",
+        "mongoose": "^9.11.4",
         "multer": "^2.4.0",
         "nodemailer": "^10.0.9",
         "probe-image-size": "^7.3.0",
